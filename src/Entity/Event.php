@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -42,9 +43,11 @@ class Event
      */
     private $type;
 
-    /**
+     /**
      * @var \DateTime
      *
+     * @Assert\NotBlank(message="La date de l'événement ne peut pas être vide")
+     * @Assert\GreaterThan("today", message="La date de l'événement doit être ultérieure à aujourd'hui")
      * @ORM\Column(name="date", type="date", nullable=false)
      */
     private $date;
@@ -70,11 +73,15 @@ class Event
      */
     private $localisation;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="nombre_P", type="integer", nullable=false)
-     */
+/**
+ * @var int
+ *
+ * @Assert\NotBlank(message="Le nombre de participants ne peut pas être vide")
+ * @Assert\GreaterThan(value=0, message="Le nombre de participants doit être supérieur à zéro")
+ * @Assert\LessThanOrEqual(value=5, message="Le nombre de participants ne peut pas dépasser 5")
+ * @ORM\Column(name="nombre_P", type="integer", nullable=false)
+ */
+
     private $nombreP;
 
     /**
