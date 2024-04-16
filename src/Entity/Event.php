@@ -21,6 +21,13 @@ class Event
      */
     private $id;
 
+     /**
+     * @var string
+     *
+     * @Assert\NotBlank(message="Le nom de l'événement ne peut pas être vide")
+     * @Assert\Length(max=255, maxMessage="Le nom de l'événement ne peut pas dépasser {{ limit }} caractères")
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
     /**
      * @var string
      *

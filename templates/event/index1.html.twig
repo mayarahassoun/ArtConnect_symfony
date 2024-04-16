@@ -20,8 +20,8 @@
                             <h4>Id :{{ event.id }}</h4><br>
                             <h4>Name: {{ event.name }}</h4><br>
                             <span>Type: {{ event.type }}</span><br>
-                            <span>Date{{ event.date ? event.date|date('Y-m-d') : '' }}</span><br>
-                            <span>Description{{ event.description }}</span><br>
+                            <span>Date:{{ event.date ? event.date|date('Y-m-d') : '' }}</span><br>
+                            <span>Description:{{ event.description }}</span><br>
                                                        
                             <span>Localisation: {{ event.localisation }}</span><br>
                             <span>Nombre People:{{ event.nombreP }}</span><br>
@@ -39,5 +39,4 @@
             {% endfor %}
         </div>
     </div>
-    <a href="{{ path('app_event_new') }}">Create new</a>
 {% endblock %}

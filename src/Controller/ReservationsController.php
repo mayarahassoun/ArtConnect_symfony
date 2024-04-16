@@ -27,7 +27,7 @@ class ReservationsController extends AbstractController
         ]);
     }
     
-    #[Route('/a', name: 'app_res_index', methods: ['GET'])]
+    #[Route('/f', name: 'app_res_index', methods: ['GET'])]
     public function index1(EntityManagerInterface $entityManager): Response
     {
         $events = $entityManager
@@ -59,7 +59,7 @@ $eventRepository = $entityManager->getRepository(Event::class);
             $entityManager->persist($reservation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_reservations_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_res_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('reservations/new.html.twig', [
