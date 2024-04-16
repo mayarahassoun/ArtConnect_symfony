@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offre demploi{% endblock %}
+
+{% block body %}
+    <h1>Les Offres d'emploi </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Salaire</th>
+                <th>Status</th>
+                <th>Entreprise</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offredemploi in offredemplois %}
+            <tr>
+                <td>{{ offredemploi.id }}</td>
+                <td>{{ offredemploi.titre }}</td>
+                <td>{{ offredemploi.description }}</td>
+                <td>{{ offredemploi.salaire }}</td>
+                <td>{{ offredemploi.status }}</td>
+                <td>{{ offredemploi.entreprise }}</td>
+                <td>
+                    <a href="{{ path('app_offredemploi_show', {'id': offredemploi.id}) }}">show</a>
+                    <a href="{{ path('app_offredemploi_edit', {'id': offredemploi.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offredemploi_new') }}">Create new</a>
+{% endblock %}

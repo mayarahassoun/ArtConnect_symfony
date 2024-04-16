@@ -1,0 +1,40 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Offredemploi{% endblock %}
+
+{% block body %}
+    <h1>Offredemploi</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offredemploi.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ offredemploi.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ offredemploi.description }}</td>
+            </tr>
+            <tr>
+                <th>Salaire</th>
+                <td>{{ offredemploi.salaire }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ offredemploi.status }}</td>
+            </tr>
+            <tr>
+                <th>Entreprise</th>
+                <td>{{ offredemploi.entreprise.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offredemploi_index1') }}">Back to list</a>
+
+    <a href="#" class="btn btn-primary">Apply</a>
+{% endblock %}
