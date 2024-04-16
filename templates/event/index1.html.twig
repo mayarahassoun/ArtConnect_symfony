@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event index{% endblock %}
+
+{% block body %}
+    <h1>Event index</h1>
+    <div class="container" >
+        <div class="row">
+            {% for event in events %}
+<div class="col-lg-4" style="padding-bottom: 20px;">
+<div class="item" style="border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); padding: 10px;">
+
+{% if event.eventpath %}
+    <img src="{{ event.eventpath|raw  }}" alt="">
+{% endif %}
+
+                        <div class="down-content">
+<img src="{{ asset('uploadedimages/' ~ event.eventpath) }}" style="width:250px;length:150px " alt="Event Image">
+
+                            <h4>Id :{{ event.id }}</h4><br>
+                            <h4>Name: {{ event.name }}</h4><br>
+                            <span>Type: {{ event.type }}</span><br>
+                            <span>Date{{ event.date ? event.date|date('Y-m-d') : '' }}</span><br>
+                            <span>Description{{ event.description }}</span><br>
+                                                       
+                            <span>Localisation: {{ event.localisation }}</span><br>
+                            <span>Nombre People:{{ event.nombreP }}</span><br>
+                            <span>{{ event.latitude }}</span><br>
+                            <span>{{ event.longitude }}</span><br>
+                                <a href="{{ path('app_reservations_new', {'id': event.id}) }}"><button>reserver</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <tr>
+                    <td colspan="11">no records found</td>
+                </tr>
+            {% endfor %}
+        </div>
+    </div>
+    <a href="{{ path('app_event_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,5 @@
+image_display:
+    path: /images/{imagePath<.+>}
+    controller: App\Controller\ImageController::display
+    requirements:
+        imagePath: .+

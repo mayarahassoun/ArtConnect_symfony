@@ -1,0 +1,41 @@
+{% extends 'base1.html.twig' %}
+
+{% block title %}Reservations index{% endblock %}
+
+{% block body %}
+    <h1>Les Reservations </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Idreserv</th>
+                <th>Userid</th>
+                <th>Nbrp</th>
+                <th>Email</th>
+                <th>Num</th>
+                
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.idreserv }}</td>
+                <td>{{ reservation.userid }}</td>
+                <td>{{ reservation.nbrp }}</td>
+                <td>{{ reservation.email }}</td>
+                <td>{{ reservation.num }}</td>
+               
+                <td>
+                    <a href="{{ path('app_reservations_show', {'idreserv': reservation.idreserv}) }}"><button>show</button></a>
+  <a href="{{ path('app_reservations_delete', {'idreserv': reservation.idreserv}) }}"><button>Delete</button></a>                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
