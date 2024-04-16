@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pointvente index{% endblock %}
+
+{% block body %}
+    <h1>Pointvente index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Localisation</th>
+                <th>Description</th>
+                <th>Numero</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pointvente in pointventes %}
+            <tr>
+                <td>{{ pointvente.id }}</td>
+                <td>{{ pointvente.name }}</td>
+                <td>{{ pointvente.localisation }}</td>
+                <td>{{ pointvente.description }}</td>
+                <td>{{ pointvente.numero }}</td>
+                <td>
+                    <a href="{{ path('app_pointvente_show', {'id': pointvente.id}) }}">show</a>
+                    <a href="{{ path('app_pointvente_edit', {'id': pointvente.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pointvente_new') }}">Create new</a>
+{% endblock %}

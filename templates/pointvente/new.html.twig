@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pointvente{% endblock %}
+
+{% block body %}
+    <h1>Create new Pointvente</h1>
+
+    {{ include('pointvente/_form.html.twig') }}
+
+    <a href="{{ path('app_pointvente_index') }}">back to list</a>
+{% endblock %}
